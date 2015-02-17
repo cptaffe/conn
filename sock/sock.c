@@ -3,6 +3,7 @@
 
 #include <sys/socket.h>	// socket, bind
 #include <arpa/inet.h>	// struct sockaddr_in
+#include <netinet/in.h>
 #include <string.h>
 
 #include "sock.h"
