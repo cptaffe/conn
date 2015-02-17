@@ -7,7 +7,8 @@
 // argument options (bitmask)
 enum args {
 	ARG_VERBOSE = 1 << 0,
-	ARG_VERSION = 1 << 2
+	ARG_VERSION = 1 << 1,
+	ARG_BROADCAST = 1 << 2,
 };
 
 char *parse_args(enum args *args, int argc, char *argv[]);

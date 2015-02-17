@@ -1,4 +1,6 @@
 
+// Copyright (c) 2015 Connor Taffe
+
 #include <stdio.h>
 #include <string.h>
 
@@ -41,10 +43,12 @@ static int pa_long(struct pa *a) {
 	const char *opt = &a->argv[a->argi][2];
 	if (!strcmp(opt, "version")) {
 		*a->args |= ARG_VERSION;
+	} else if (!strcmp(opt, "broadcast")) {
+		*a->args |= ARG_BROADCAST;
 	} else {
-		strnlen(opt, 10) < 10
-		? sprintf(a->err, "(%d): unknown long option '%s'", a->argi, opt)
-		: sprintf(a->err, "(%d): unknown long option '%.10s...''", a->argi, opt);
+		strnlen(opt, 10) > 10
+		? sprintf(a->err, "(%d): unknown long option '%.10s...''", a->argi, opt)
+		: sprintf(a->err, "(%d): unknown long option '%s'", a->argi, opt);
 		return 1;
 	}
 	return 0;

@@ -1,9 +1,10 @@
 
+// Copyright (c) 2015 Connor Taffe
+
 #include <stdio.h>
 
 #include "args.h"
-
-// Copyright (c) 2015 Connor Taffe
+#include "sock.h"
 
 // following GNU coding standards, this is the accepted version format.
 char *version_text =
@@ -27,5 +28,8 @@ int main(int argc, char *argv[]) {
 	}
 	if (args & ARG_VERBOSE) {
 		puts("finished parsing arguments");
+	}
+	if (args & ARG_BROADCAST) {
+		sock_broadcast("255.255.255.255", 0xbad, "This is a test.");
 	}
 }
