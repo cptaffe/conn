@@ -5,8 +5,8 @@ OBJ := $(SRC:.c=.o)
 BIN = chat
 
 # comp library
-LIBS = sock/libsock.o
-CFLAGS += -g -I$(dir $(LIBS))
+LIBS = sock/libsock.o utf8/libutf8.o
+CFLAGS += -g $(addprefix -I, $(dir $(LIBS)))
 
 .PHONY: all clean
 

@@ -11,6 +11,24 @@ enum args {
 	ARG_BROADCAST = 1 << 2,
 };
 
-char *parse_args(enum args *args, int argc, char *argv[]);
+typedef struct {
+	// arguments
+	int argc;
+	char **argv;
+	enum args *args;
+	int argi; // current index
+	void *func;
+
+	// application specific info
+	char *broadcast;
+} pa;
+
+int parse_args(pa *a);
+void *pa_state_all(pa *a);
+void *pa_state_long(pa *a);
+void *pa_state_short(pa *a);
+
+pa *pa_init(int argc, char *argv[]);
+void pa_free(pa *a);
 
 #endif // CONN_ARGS_H_
