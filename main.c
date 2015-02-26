@@ -31,11 +31,10 @@ int main(int argc, char *argv[]) {
 	}
 
 	// init utf8 parser
-	utf8_Rune num = 0;
-	for(int i = 0; (num = utf8_GetRune(stdin)); i++){
-		uint32_t n = 0;
-		utf8_RuneDecode(num, &n);
-		printf("code-point: U+%X\n", n);
+	for(int32_t i = 0; i < 0x10ffff; i++){
+		char str[5] = {0};
+		*((utf8_Rune *) str) = utf8_EncodeRune(i);
+		printf("%s", (char *) str);
 	}
 
 	// respond to specific arguments
