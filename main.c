@@ -31,22 +31,12 @@ int main(int argc, char *argv[]) {
 	}
 
 	// init utf8 parser
-	const uint8_t *str = (const uint8_t *)
-	"\uD55C";
-	utf8_String *string = utf8_String_init(str);
-	utf8_Parser *p = utf8_Parser_init(string);
 	utf8_Rune num = 0;
-	for(int i = 0; !utf8_Parser_Get(p, &num); i++){
-		printf("%s", (char *) &num);
-		printf("code-point: U+%X\n", utf8_RuneDecode(num));
+	for(int i = 0; (num = utf8_GetRune(stdin)); i++){
+		uint32_t n = 0;
+		utf8_RuneDecode(num, &n);
+		printf("code-point: U+%X\n", n);
 	}
-	printf("len: %d\n", utf8_RuneCount(string));
-	utf8_String_free(string);
-	utf8_Parser_free(p);
-
-	char s[] = {0,0,0,0,0};
-	 utf8_RuneEncode(0xff, (utf8_Rune *) s);
-	printf("test: '%s'\n", s);
 
 	// respond to specific arguments
 	if (*a->args & ARG_VERSION) {
