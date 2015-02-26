@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 	// init utf8 parser
 	for(int32_t i = 0; i < 0x10ffff; i++){
 		char str[5] = {0};
-		*((utf8_Rune *) str) = utf8_EncodeRune(i);
+		*((utf8_rune *) str) = utf8_encode(i);
 		printf("%s", (char *) str);
 	}
 
