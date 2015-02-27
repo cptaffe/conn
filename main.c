@@ -4,9 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "args.h"
-#include "sock.h"
-#include "utf8.h"
+#include <sock.h>
+#include <utf8.h>
+#include <args.h>
 
 // following GNU coding standards, this is the accepted version format.
 char *version_text =

@@ -1,12 +1,11 @@
 
-SRC = main.c args.c
-HDR = args.h
+SRC = main.c
 OBJ := $(SRC:.c=.o)
 BIN = chat
 
 # comp library
-LIBS = sock/libsock.o utf8/libutf8.o
-CFLAGS += -g $(addprefix -I, $(dir $(LIBS)))
+LIBS = sock/libsock.o utf8/libutf8.o args/libargs.o
+CFLAGS += -g --std=c99 $(addprefix -I, $(dir $(LIBS)))
 
 .PHONY: all clean
 

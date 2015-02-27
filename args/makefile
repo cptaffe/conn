@@ -1,8 +1,8 @@
-SRC = sock.c
-HDR = sock.h
+SRC = args.c
+HDR = args.h
 
 OBJ := $(SRC:.c=.o)
-LIB = libsock.o
+LIB = libargs.o
 
 LIBS=
 CFLAGS+=-g  $(addprefix -I, $(dir $(LIBS)))
